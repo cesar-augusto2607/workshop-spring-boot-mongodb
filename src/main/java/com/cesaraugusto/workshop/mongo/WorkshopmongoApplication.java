@@ -1,4 +1,4 @@
-package com.cesaraugusto.workshop.mpngp;
+package com.cesaraugusto.workshop.mongo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
