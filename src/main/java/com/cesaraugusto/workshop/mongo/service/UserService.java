@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cesaraugusto.workshop.mongo.DTO.UserDTO;
 import com.cesaraugusto.workshop.mongo.domain.User;
 import com.cesaraugusto.workshop.mongo.repository.UserRepository;
 import com.cesaraugusto.workshop.mongo.service.exception.ObjectNotFoundException;
@@ -24,4 +25,13 @@ public class UserService {
 		Optional<User> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
 	}
+	
+	public User insert(User obj) {
+		return repo.insert(obj);
+	}
+	
+	public User fromDTO(UserDTO objDTO) {
+		return new User(objDTO.getId(), objDTO.getName(), objDTO.getEmail());
+	}
+	
 }
