@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -53,6 +52,12 @@ public class UserResource {
 		return ResponseEntity.noContent().build();
 	}
 	
-	
+	@RequestMapping (value= "/{id}", method=RequestMethod.PUT)
+	public ResponseEntity<Void> update(@RequestBody UserDTO objDTO, @PathVariable String id){
+		User obj = service.fromDTO(objDTO);
+		obj.setId(id);
+		obj = service.update(obj);
+		return ResponseEntity.noContent().build();
+	}
 	
 }
